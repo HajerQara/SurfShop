@@ -9,3 +9,5 @@ Your program should allow the user to do the following:
    <br> 1) Buy any surfboard in any size and in any quanity.
     <br>2) At any time show the total number of surfboards of each size sold.
     <br>3) At any time show the total money made.
+<br>
+EDIT: Modified the code so that it it contains one size of surfboard (XXXS for squirrel surfing). 
