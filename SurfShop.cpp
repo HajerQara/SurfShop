@@ -23,105 +23,63 @@ Your program should allow the user to do the following:
 
 using namespace std;
 
-
 //a function to sell surfboards.
-void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
+void MakePurchase(int& iTotalXXXSmall)
 {
     //Declared Variables
     int quantity;
-    char size;
+    string size;
 
     // Prompts the users to make a single purchase of a surfboard
-    cout << "Please enter the quantity and type (S=small, M=medium, L=large) of surfboard you would like to purchase:";
+    cout << "Please enter the quantity and type (XXXS= extra extra extra small) of surfboard you would like to purchase:";
     // Allows the user to enter how many surfboards and in what size
     cin >> quantity >> size;
     cout << endl;
 
-    // This decision structure allows us to analyze what size the user had entered
-    if (size == 's' || size == 'S') {
-        // This will allow the total quantity of the small size to increment 
-        // if users purchase more small surfboards
-        iTotalSmall += quantity;
-    }
-    else if (size == 'm' || size == 'M') {
-        // This will allow the total quantity of the medium size to increment 
-        // if users purchase more medium surfboards
-        iTotalMedium += quantity;
-    }
-    else {
-        // This will allow the total quantity of the large size to increment 
-        // if users purchase more large surfboards
-        iTotalLarge += quantity;
-    }
+    // This will allow the total quantity of the small size to increment 
+    // if users purchase more small surfboards
+    iTotalXXXSmall += quantity;
+
+
 
 }
 
 // function to show the number of surfboards of each size sold.
-void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+void DisplayPurchase(const int iTotalXXXSmall)
 {
     //Declared Variables
     string size;
 
     // checks to see if there where any small surfboards purchased
-    if (iTotalSmall) {
-        size = "small"; // dynamically inputs size
-      //Prints out total quantity for the specific size
-        cout << "The total number of " << size << " surfboards is " << iTotalSmall << endl;
-    }
-    // checks to see if there where any medium surfboards purchased
-    if (iTotalMedium) {
-        size = "medium"; // dynamically inputs size
-      //Prints out total quantity for the specific size
-        cout << "The total number of " << size << " surfboards is " << iTotalMedium << endl;
-    }
-    // checks to see if there where any large surfboards purchased
-    if (iTotalLarge) {
-        size = "large"; // dynamically inputs size
-      //Prints out total quantity for the specific size
-        cout << "The total number of " << size << " surfboards is " << iTotalLarge << endl;
-    }
+
+    size = "extra extra extra small"; // dynamically inputs size
+  //Prints out total quantity for the specific size
+    cout << "The total number of " << size << " surfboards is " << iTotalXXXSmall << endl;
+
 
     cout << endl;
 
 }
 
 //a function to show the total amount of money made.
-void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+void DisplayTotal(const int iTotalXXXSmall)
 {
     //Constant Variables
-    const double SMALL_PRICE = 175.00;
-    const double MEDIUM_PRICE = 190.00;
-    const double LARGE_PRICE = 200.00;
+    const double xxxSmallPrice = 100.00;
 
     //Declared Variables
     double totalPrice = 0.00;
     double amountDue = 0.00;
     string size;
 
-    if (iTotalSmall) {
-        size = "small";
-        // calculates the total price for the individual size group
-        totalPrice = iTotalSmall * SMALL_PRICE;
-        cout << "The total number of " << size << " surfboards is " << iTotalSmall << " at a total of $" << fixed << setprecision(2) << totalPrice << endl;
-        // accumulates the amount for the total amount due by the user
-        amountDue = amountDue + totalPrice;
-    }
-    if (iTotalMedium) {
-        size = "medium";
-        // calculates the total price for the individual size group
-        totalPrice = iTotalMedium * MEDIUM_PRICE;
-        cout << "The total number of " << size << " surfboards is " << iTotalMedium << " at a total of $" << fixed << setprecision(2) << totalPrice << endl;
-        // accumulates the amount for the total amount due by the user
-        amountDue = amountDue + totalPrice;
-    }
-    if (iTotalLarge) {
-        size = "large";
-        // calculates the total price for the individual size group
-        totalPrice = iTotalLarge * LARGE_PRICE;
-        cout << "The total number of " << size << " surfboards is " << iTotalLarge << " at a total of $" << fixed << setprecision(2) << totalPrice << endl;
-        // accumulates the amount for the total amount due by the user
-        amountDue = amountDue + totalPrice;
-    }
+
+    size = "extra extra extra small";
+    // calculates the total price for the individual size group
+    totalPrice = iTotalXXXSmall * xxxSmallPrice;
+    cout << "The total number of " << size << " surfboards is " << iTotalXXXSmall << " at a total of $" << fixed << setprecision(2) << totalPrice << endl;
+    // accumulates the amount for the total amount due by the user
+    amountDue = amountDue + totalPrice;
+
 
 
     cout << "Amount due: $" << fixed << setprecision(2) << amountDue << endl;
@@ -138,6 +96,7 @@ void ShowUsage()
     cout << "To display total amount due press 'T" << endl;
     cout << "To quit the program press 'Q" << endl << endl;
 
+
 }
 
 
@@ -151,11 +110,6 @@ int main()
     int welcomeLength;
     int border;
     int halfBorder;
-    char selection;
-    // initializes the parameters that get passed through the functions
-    int iTotalSmall = 0;
-    int iTotalMedium = 0;
-    int iTotalLarge = 0;
 
     // Greeting that welcomes the users to the shop 
     welcomeMessage = " Welcome to my Johnny Utah's PointBreak Surf Shop! ";
@@ -174,6 +128,10 @@ int main()
 
     ShowUsage();
 
+    //Declared variables for menu 
+    char selection;
+    // initializes the parameters that get passed through the functions
+    int iTotalXXXSmall = 0;
 
     // Asks the user to make a selection from the menu
     cout << "Please enter selection:";
@@ -184,26 +142,26 @@ int main()
             ShowUsage();
         }
         else if (selection == 'P' || selection == 'p') {
-            MakePurchase(iTotalSmall, iTotalMedium, iTotalLarge);
+            MakePurchase(iTotalXXXSmall);
         }
         else if (selection == 'C' || selection == 'c') {
             //checks if there have been any purches yet 
-            if (iTotalSmall == 0 && iTotalMedium == 0 && iTotalLarge == 0) {
+            if (iTotalXXXSmall == 0) {
                 cout << "No purchases made yet." << endl;
                 cout << endl;
             }
             else {
-                DisplayPurchase(iTotalSmall, iTotalMedium, iTotalLarge);
+                DisplayPurchase(iTotalXXXSmall);
             }
         }
         else if (selection == 'T' || selection == 't') {
             //checks if there have been any purches yet 
-            if (iTotalSmall == 0 && iTotalMedium == 0 && iTotalLarge == 0) {
+            if (iTotalXXXSmall == 0) {
                 cout << "No purchases made yet." << endl;
                 cout << endl;
             }
             else {
-                DisplayTotal(iTotalSmall, iTotalMedium, iTotalLarge);
+                DisplayTotal(iTotalXXXSmall);
             }
         }
         else {
@@ -220,6 +178,7 @@ int main()
     system("pause");
     return 0;
 }
+
 
 
 
